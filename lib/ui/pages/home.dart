@@ -48,17 +48,20 @@ class _HomeState extends State<Home> {
             items: [
               BottomNavigationBarItem(
                   icon: Icon(BoxIcons.bx_home_circle),
-                  title: tabNo == 0 ? Text("Home") : Container()),
+                  label: tabNo == 0 ? "Home" : ""),
               BottomNavigationBarItem(
-                  icon: Icon(BoxIcons.bx_calendar),
-                  title: tabNo == 1 ? Text("Planner") : Container()),
+                icon: Icon(BoxIcons.bx_calendar),
+                label: tabNo == 1 ? "Planner" : "",
+              ),
               BottomNavigationBarItem(icon: Container()),
               BottomNavigationBarItem(
-                  icon: Icon(BoxIcons.bxs_videos),
-                  title: tabNo == 3 ? Text("Videos") : Container()),
+                icon: Icon(BoxIcons.bxs_videos),
+                label: tabNo == 3 ? "Videos" : "",
+              ),
               BottomNavigationBarItem(
-                  icon: Icon(BoxIcons.bx_stats),
-                  title: tabNo == 4 ? Text("Leaderboard") : Container()),
+                icon: Icon(BoxIcons.bx_stats),
+                label: tabNo == 4 ? "Leaderboard" : "",
+              ),
             ],
           ),
           tabBuilder: (context, index) => (index == 0)

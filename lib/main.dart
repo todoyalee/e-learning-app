@@ -9,17 +9,30 @@ import 'package:elearning/routes/router.dart' as router;
 import 'package:shared_preferences/shared_preferences.dart';
 
 late SharedPreferences prefs;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  SharedPreferences.getInstance().then((prefs) {
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-        .then((value) => runApp(
-              RestartWidget(
-                child: MyApp(),
-              ),
-            ));
-  });
+
+  // Initialize Firebase with manual configuration
+  await Firebase.initializeApp(
+    options: FirebaseOptions(
+      apiKey: "AIzaSyCPSfZp67cSlYlmRls3toFshuIdVDfNsxE",
+      authDomain: "learningapp-a0e2b.firebaseapp.com",
+      projectId: "learningapp-a0e2b",
+      storageBucket: "learningapp-a0e2b.appspot.com",
+      messagingSenderId: "710554233710",
+      appId: "1:710554233710:web:56c3c88e98d129d47baf7f",
+      measurementId: "G-BN2M9FMH4K",
+    ),
+  );
+
+  prefs = await SharedPreferences.getInstance();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((value) => runApp(
+            RestartWidget(
+              child: MyApp(),
+            ),
+          ));
 }
 
 class MyApp extends StatefulWidget {
@@ -49,7 +62,6 @@ class _MyAppState extends State<MyApp> {
           builder: (context) => UndefinedScreen(
                 name: settings.name,
               )),
-      // theme: Provider.of<ThemeModel>(context).currentTheme,
       debugShowCheckedModeBanner: false,
       home: Onboarding(),
     );
